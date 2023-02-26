@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { FaRegAddressBook, FaSearch } from 'react-icons/fa';
 import {
   ContactList,
