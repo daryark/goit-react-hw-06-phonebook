@@ -10,8 +10,18 @@ const contactsSlice = createSlice({
   initialState,
   // Об'єкт редюсерів
   reducers: {
-    addContact(state, action) {
-      state.contacts = [...state.contacts, { ...action.payload, id: nanoid() }];
+    addContact: {
+      reducer(state, action) {
+        state.contacts = [...state.contacts, action.payload];
+      },
+      prepare(contact) {
+        return {
+          payload: {
+            ...contact,
+            id: nanoid(),
+          },
+        };
+      },
     },
     deleteContact(state, action) {
       state.contacts = state.contacts.filter(({ id }) => id !== action.payload);

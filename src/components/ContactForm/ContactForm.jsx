@@ -12,7 +12,7 @@ import { addContact } from 'redux/contacts/contactsSlice';
 export function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contactsR = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
@@ -28,7 +28,7 @@ export function ContactForm() {
     e.preventDefault();
 
     if (
-      contactsR.some(
+      contacts.some(
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
@@ -76,7 +76,3 @@ export function ContactForm() {
     </AddContactForm>
   );
 }
-
-// ContactForm.propTypes = {
-//   submitFn: PropTypes.func.isRequired,
-// };

@@ -7,8 +7,8 @@ import { deleteContact } from 'redux/contacts/contactsSlice';
 import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 
 export const ContactList = () => {
-  const contactsR = useSelector(selectContacts);
-  const filterR = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const getFilteredContacts = (contacts, filter) => {
@@ -28,7 +28,7 @@ export const ContactList = () => {
 
   const handleClickDelete = contactId => dispatch(deleteContact(contactId));
 
-  const filtered = getFilteredContacts(contactsR, filterR);
+  const filtered = getFilteredContacts(contacts, filter);
   return (
     <ul>
       {Boolean(filtered.length) ? (
@@ -49,14 +49,3 @@ export const ContactList = () => {
     </ul>
   );
 };
-
-// ContactList.propTypes = {
-//   deleteContact: PropTypes.func.isRequired,
-//   filter: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string,
-//       number: PropTypes.string,
-//       id: PropTypes.string,
-//     }).isRequired
-//   ).isRequired,
-// };
