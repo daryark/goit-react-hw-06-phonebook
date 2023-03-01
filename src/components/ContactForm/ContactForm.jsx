@@ -7,7 +7,7 @@ import { AddContactForm, FormBtn } from './ContactForm.styled';
 import { Input, Label } from 'components/common/Input/Input.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
-import { addContact } from 'redux/contacts/contactsSlice';
+import { addContact } from 'redux/contacts/operations';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -35,7 +35,7 @@ export function ContactForm() {
       alert(`${name} is already in your contacts! Try to find in search.`);
       return;
     }
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone: number }));
     reset();
   };
 
